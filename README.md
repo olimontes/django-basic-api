@@ -100,13 +100,6 @@ curl -X DELETE http://127.0.0.1:8000/data/ -H "Content-Type: application/json" -
 - Uso de `user_nickname` como chave primária string é intencional para aprendizado, mas em produção normalmente se usa `id` numérico.
 - Views são function-based e fazem tratamento básico de erros; pode crescer para class-based views ou ViewSets para simplificar.
 
-**Próximos passos sugeridos (para continuar aprendendo)**
-- Refatorar para `ViewSet` + `Router` do DRF e usar `ModelViewSet`.
-- Adicionar autenticação (Token, JWT ou Session) e permissões.
-- Adicionar testes unitários e de integração para endpoints.
-- Melhorar validação nos serializers e adicionar constraints no modelo (ex.: `unique=True` onde fizer sentido).
-- Adicionar paginação, filtros e ordenação para listagem.
-- Dockerizar a aplicação e adicionar CI (GitHub Actions) para rodar testes automaticamente.
 
 **Como contribuir / usar**
 - Clonar o repositório, criar branch com seu recurso/bugfix, abrir PR.
