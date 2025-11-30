@@ -107,4 +107,4 @@ curl -X DELETE http://127.0.0.1:8000/data/ -H "Content-Type: application/json" -
 
 ---
 
-Feito com propósito de estudo: focado em entender roteamento, modelos, serializers e operações CRUD com Django REST Framework. Boa continuação nos estudos! :rocket:
+Feito com propósito de estudo: focado em entender roteamento, modelos, serializers e operações CRUD com Django REST Framework. :rocket:
