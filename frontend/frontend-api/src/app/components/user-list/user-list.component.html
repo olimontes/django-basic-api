@@ -1,0 +1,19 @@
+<div>
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <h2>Usuários</h2>
+    <a routerLink="/user/new">Criar usuário</a>
+  </div>
+
+  <div *ngIf="loading">Carregando usuários...</div>
+  <div *ngIf="error">{{ error }}</div>
+  <div *ngIf="!loading && users.length === 0">Nenhum usuário encontrado.</div>
+
+  <div *ngFor="let u of users" style="border-bottom:1px solid #eee;padding:8px 0;">
+    <h3 style="margin:0"><a (click)="view(u.user_nickname)" style="cursor:pointer">{{ u.username }}</a> ({{ u.user_nickname }})</h3>
+    <p style="margin:4px 0">{{ u.email }} — {{ u.user_age }} anos</p>
+    <div>
+      <button (click)="edit(u.user_nickname)">Editar</button>
+      <button (click)="remove(u.user_nickname)">Excluir</button>
+    </div>
+  </div>
+</div>

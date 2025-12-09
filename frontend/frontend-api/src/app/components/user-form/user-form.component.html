@@ -1,0 +1,25 @@
+<div>
+  <h2>{{ isEdit ? 'Editar usuário' : 'Criar usuário' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div>
+      <label>Nickname</label>
+      <input formControlName="user_nickname" [readonly]="isEdit" />
+    </div>
+    <div>
+      <label>Nome</label>
+      <input formControlName="username" />
+    </div>
+    <div>
+      <label>Email</label>
+      <input formControlName="email" type="email" />
+    </div>
+    <div>
+      <label>Idade</label>
+      <input formControlName="user_age" type="number" />
+    </div>
+    <div style="margin-top:8px">
+      <button type="submit">Salvar</button>
+      <a routerLink="/">Cancelar</a>
+    </div>
+  </form>
+</div>

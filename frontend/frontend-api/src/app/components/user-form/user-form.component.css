@@ -1,0 +1,4 @@
+/* basic styles for form */
+form div { margin-bottom: 8px; }
+label { display:block; font-weight:600; }
+input { width: 100%; max-width: 320px; padding:4px 6px }

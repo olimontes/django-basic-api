@@ -107,4 +107,72 @@ curl -X DELETE http://127.0.0.1:8000/data/ -H "Content-Type: application/json" -
 
 ---
 
+<<<<<<< Updated upstream
 Feito com propósito de estudo: focado em entender roteamento, modelos, serializers e operações CRUD com Django REST Framework. :rocket:
+=======
+Feito com propósito de estudo: focado em entender roteamento, modelos, serializers e operações CRUD com Django REST Framework. Boa continuação nos estudos! :rocket:
+
+**Integrando com um frontend Angular**
+
+Opções principais:
+- Desenvolvimento (proxy): rode o servidor Angular (`ng serve`) e configure um `proxy.conf.json` para redirecionar chamadas `/api/*` para `http://127.0.0.1:8000/api/`. Assim você desenvolve o front separadamente e consome a API local.
+- Produção (build estático): gere o build do Angular (`ng build --prod`) e copie o conteúdo de `dist/` para `frontend/dist/` no projeto Django. As alterações em `api_root/settings.py` já adicionam `frontend/dist` aos `TEMPLATES` e `STATICFILES_DIRS`, e `api_root/urls.py` serve `index.html` na raiz quando existir.
+
+Passos rápidos — Desenvolvimento com proxy:
+
+1. Instale Angular CLI (se necessário):
+
+```bash
+npm install -g @angular/cli
+```
+
+2. Crie o app dentro da pasta do projeto (fora do ambiente virtual Python):
+
+```bash
+cd {seu-projeto}
+ng new frontend --routing=true --style=css
+```
+
+3. Configure `proxy.conf.json` no `frontend/` com:
+
+```json
+{
+  "/api": {
+    "target": "http://localhost:8000",
+    "secure": false
+  }
+}
+```
+
+4. Inicie o Django (`python manage.py runserver`) e, em outro terminal, rode o Angular em dev com proxy:
+
+```bash
+cd frontend
+ng serve --proxy-config proxy.conf.json
+```
+
+5. Acesse `http://localhost:4200` e as chamadas para `/api/...` serão encaminhadas ao Django.
+
+Passos rápidos — Produção / servir build com Django:
+
+1. No `frontend/` gere o build:
+
+```bash
+ng build --configuration production
+```
+
+2. Copie o conteúdo de `frontend/dist/<app-name>/` para `frontend/dist/` (ou ajuste `settings.py` para apontar para o subdiretório correto).
+
+3. Acesse `http://127.0.0.1:8000/` — o Django deverá servir o `index.html` e os assets estáticos.
+
+Notas importantes:
+- O `settings.py` foi alterado para incluir `frontend/dist` nas templates e static files, e o middleware do `corsheaders` foi reposicionado para a ordem recomendada.
+- Em desenvolvimento é comum manter frontend e backend rodando separadamente com proxy.
+- Para produção, prefira servir os assets estáticos por um servidor dedicado (Nginx) e deixar o Django apenas para a API.
+
+Se quiser, eu posso:
+- Scaffold um app Angular básico em `frontend/` (criar `frontend/` com `package.json`, arquivos iniciais) — você deseja que eu gere isso localmente?
+- Ou só adicionar um exemplo de componente e serviços para consumir os endpoints da API.
+
+Diga qual opção prefere e eu faço o próximo passo.
+>>>>>>> Stashed changes

@@ -1,0 +1,7 @@
+<div *ngIf="loading">Carregando...</div>
+<div *ngIf="!loading && user">
+  <h2>{{ user.username }} ({{ user.user_nickname }})</h2>
+  <p>{{ user.email }}</p>
+  <p>{{ user.user_age }} anos</p>
+  <a routerLink="/">Voltar</a>
+</div>
